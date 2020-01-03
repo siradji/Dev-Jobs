@@ -1,26 +1,27 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+// importig Required Modules
 
-function App() {
+import React, { Fragment } from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+
+//  importing components
+import Home from './Pages/Home';
+import NavBar from './Components/Layout/Navbar';
+import Dashboard from './Components/Layout/dashboard/Dashboard';
+import SearchPage from './Pages/SearchPage';
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Fragment>
+      <Router>
+        <NavBar />
+        <Switch>
+          <Route exact path='/' component={Home} />
+          <Route path='/dashboard' component={Dashboard} />
+          <Route path='/search' component={SearchPage} />
+        </Switch>
+      </Router>
+    </Fragment>
   );
-}
+};
 
 export default App;
