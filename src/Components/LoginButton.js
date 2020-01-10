@@ -1,7 +1,13 @@
 import React, { useContext } from 'react';
 import FacebookLogin from 'react-facebook-login';
 
-const LoginButton = (props) => {
+// Importing Context
+import AuthContext from '../Context/Auth/authContext';
+
+const LoginButton = () => {
+  const authContext = useContext(AuthContext);
+  const { isLoggedIn, responseFacebook } = authContext;
+
   let Code;
 
   if (isLoggedIn) {

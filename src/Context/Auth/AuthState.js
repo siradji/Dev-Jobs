@@ -9,7 +9,7 @@ import AuthReducer from './authReducer';
 const AuthState = (props) => {
   const initialState = {
     isLoggedIn: false,
-    userProfile: {}
+    userProfile: null
   };
 
   const [state, dispatch] = useReducer(AuthReducer, initialState);
@@ -17,10 +17,12 @@ const AuthState = (props) => {
   //  facebook CallBack
   const responseFacebook = (res) => {
     isLoggedin();
-    console.log(res);
+    localStorage.setItem('authToken', res.accessToken);
+    localStorage.setItem('expires', res.accessToken);
+
     dispatch({
       type: GETUSERPROFILE,
-      payload: res.data
+      payload: res
     });
   };
 
