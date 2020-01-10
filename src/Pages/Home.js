@@ -1,5 +1,5 @@
 // importing required modules
-import React, { Fragment, useState, useEffect } from 'react';
+import React, { Fragment, useContext } from 'react';
 import { Redirect } from 'react-router-dom';
 
 // Importing styling
@@ -34,13 +34,6 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 const Home = (props) => {
-  const [isLoggedIn, setLoggedIn] = useState(false);
-  useEffect(() => {
-    getLogged();
-  }, []);
-  const getLogged = (auth) => {
-    setLoggedIn(auth);
-  };
   const classes = useStyles();
   if (isLoggedIn) {
     return <Redirect to='/dashboard' />;
@@ -76,7 +69,7 @@ const Home = (props) => {
           <Tynography component='p' variant='p' className={classes.mobile}>
             Start Searching for your dream Job
           </Tynography>
-          <LoginButton isLoggedIn={getLogged} />
+          <LoginButton />
         </Inner>
       </div>
     </Fragment>

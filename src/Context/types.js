@@ -1,0 +1,2 @@
+export const SETLOGGEDIN = 'SETLOGGEDIN';
+export const GETUSERPROFILE = 'GETUSERPROFILE';
